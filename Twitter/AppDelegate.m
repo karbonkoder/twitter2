@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TwitterClient.h"
+#import "User.h"
+#import "Tweet.h"
 
 @interface AppDelegate ()
 
@@ -54,13 +56,19 @@
         NSLog(@"got access token");
         [[TwitterClient sharedInstance].requestSerializer saveAccessToken:accessToken];
         [[TwitterClient sharedInstance] GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-            NSLog(@"current user: %@", responseObject);
+            // NSLog(@"current user: %@", responseObject);
+            User *user = [[User alloc] initWithDictionary:responseObject];
+            NSLog(@"current user: %@", user.name);
         } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
             NSLog(@"verify cred fail");
         }];
         
         [[TwitterClient sharedInstance] GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-            NSLog(@"tweets :%@", responseObject);
+            //NSLog(@"tweets :%@", responseObject);
+            NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+            for (Tweet *tweet in tweets) {
+                NSLog(@"tweet :%@, created: %@", tweet.text, tweet.createdAt);
+            }
         } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
             NSLog(@"error getting tweets");
         }];
