@@ -23,6 +23,14 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    User *user = [User currentUser];
+    if (user != nil ) {
+        NSLog(@"Welcome back %@", user.name);
+    } else {
+        NSLog(@"User not logged in");
+    }
+    
     self.window.rootViewController = [[LoginViewController alloc] init];
     [self.window makeKeyAndVisible];
     
