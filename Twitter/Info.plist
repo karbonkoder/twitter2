@@ -24,7 +24,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.codepath.araina.twitter</string>
+			<string>com.codepath.Twitter</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>cptwitterdemo</string>
