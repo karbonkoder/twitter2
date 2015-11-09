@@ -15,16 +15,13 @@
 
 @implementation LoginViewController
 - (IBAction)onLogin:(id)sender {
-    [[TwitterClient sharedInstance].requestSerializer removeAccessToken];
-    [[TwitterClient sharedInstance] fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"cptwitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
-        NSLog(@"got request token");
-        
-        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token]];
-        
-        [[UIApplication sharedApplication] openURL:authURL];
-        
-    } failure:^(NSError *error) {
-        NSLog(@"got error");
+    [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
+        if (user != nil) {
+            // Modally present tweets view
+            NSLog(@"Welcome to %@", user.name);
+        } else {
+            // Present error view.
+        }
     }];
 }
 
