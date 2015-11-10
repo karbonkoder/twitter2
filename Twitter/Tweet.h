@@ -15,6 +15,7 @@
 @property(nonatomic, strong) NSDate *createdAt;
 @property(nonatomic, strong) User *user;
 
+
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 +(NSArray *)tweetsWithArray:(NSArray *)array;

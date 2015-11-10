@@ -10,8 +10,17 @@
 #import "User.h"
 #import "TwitterClient.h"
 #import "Tweet.h"
+#import "TweetTableViewCell.h"
+#import "User.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface TweetsViewController ()
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSArray *tweets;
 
 @end
 
@@ -24,12 +33,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"TweetTableViewCell" bundle:nil] forCellReuseIdentifier:@"TweetTableViewCell"];
+    
+    self.tableView.estimatedRowHeight = 2.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    User *user = [User currentUser];
+    self.userNameLabel.text = user.name;
+    NSLog(@"Profile image url: %@", user.profileImageUrl);
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
+    
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        for (Tweet *tweet in tweets) {
-            NSLog(@"text: %@", tweet.text);
-        }
+        self.tweets = tweets;
+        
+        [self.tableView reloadData]; // TODO Move to different thread?
     }];
 }
+
+#pragma mark - Table view methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tweets.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
+    
+    cell.tweet = self.tweets[indexPath.row];
+    
+    return cell;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
