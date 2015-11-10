@@ -13,6 +13,7 @@
 
 @property(nonatomic, strong) NSString *text;
 @property(nonatomic, strong) NSDate *createdAt;
+@property(nonatomic, assign) long long id;
 @property(nonatomic, strong) User *user;
 
 

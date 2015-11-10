@@ -82,7 +82,29 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 }
 
 - (void)postTweet:(NSString *)text completion:(void (^)(NSError *error))completion {
-    [self POST:@"1.1/statuses/update.json" parameters:@{@"status": text} success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:text forKey:@"status"];
+    
+    [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        completion(nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completion(error);
+    }];
+}
+
+
+- (void)reTweet:(Tweet *)tweet completion:(void (^)(NSError *error))completion {
+    NSString *postUrl = [NSString stringWithFormat:@"1.1/statuses/retweet/%lld.json", tweet.id];
+    NSLog(@"%@", postUrl);
+    [self POST:postUrl parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        completion(nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completion(error);
+    }];
+}
+
+- (void)favorite:(Tweet *)tweet completion:(void (^)(NSError *error))completion {
+    [self POST:@"1.1/favorites/create.json" parameters:@{@"id": [NSString stringWithFormat:@"%lld", tweet.id]} success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         completion(nil);
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         completion(error);
