@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic) NSArray *tweets;
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation TweetsViewController
@@ -32,6 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -46,11 +53,21 @@
     NSLog(@"Profile image url: %@", user.profileImageUrl);
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
     
+    [self fetchTweets];
+}
+
+-(void) fetchTweets {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         self.tweets = tweets;
         
         [self.tableView reloadData]; // TODO Move to different thread?
     }];
+}
+
+-(void) onRefresh {
+    [self fetchTweets];
+    
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Table view methods
