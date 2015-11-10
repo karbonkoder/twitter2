@@ -13,6 +13,7 @@
 #import "TweetTableViewCell.h"
 #import "User.h"
 #import "UIImageView+AFNetworking.h"
+#import "ComposeViewController.h"
 
 @interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -29,6 +30,10 @@
 @implementation TweetsViewController
 - (IBAction)onLogout:(id)sender {
     [User logout];
+}
+
+- (IBAction)onTweet:(id)sender {
+    [self presentViewController:[[ComposeViewController alloc] init] animated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
@@ -50,7 +55,6 @@
     
     User *user = [User currentUser];
     self.userNameLabel.text = user.name;
-    NSLog(@"Profile image url: %@", user.profileImageUrl);
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
     
     [self fetchTweets];

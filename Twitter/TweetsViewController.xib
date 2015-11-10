@@ -47,11 +47,22 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIg-zT-xuY">
+                            <rect key="frame" x="62" y="15" width="42" height="30"/>
+                            <state key="normal" title="Tweet">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onTweet:" destination="-1" eventType="touchUpInside" id="b51-dk-xBf"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.23184308952029198" green="0.79331024334666167" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="V8L-3c-Cie" firstAttribute="centerY" secondItem="5Z7-ei-NbU" secondAttribute="centerY" id="8oZ-nP-noy"/>
+                        <constraint firstItem="TIg-zT-xuY" firstAttribute="centerY" secondItem="5Z7-ei-NbU" secondAttribute="centerY" id="DHX-vy-z4m"/>
                         <constraint firstAttribute="height" constant="60" id="DNV-oS-7cD"/>
+                        <constraint firstItem="TIg-zT-xuY" firstAttribute="leading" secondItem="1PX-aJ-rxt" secondAttribute="trailing" constant="10" id="H2i-EP-lL9"/>
                         <constraint firstItem="1PX-aJ-rxt" firstAttribute="centerY" secondItem="5Z7-ei-NbU" secondAttribute="centerY" id="NfS-MF-VgR"/>
                         <constraint firstItem="V8L-3c-Cie" firstAttribute="centerX" secondItem="5Z7-ei-NbU" secondAttribute="centerX" id="Pyn-V5-vRR"/>
                         <constraint firstItem="h3U-6L-t7h" firstAttribute="centerY" secondItem="5Z7-ei-NbU" secondAttribute="centerY" id="Vdi-V3-R2x"/>

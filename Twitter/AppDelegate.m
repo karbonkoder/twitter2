@@ -29,7 +29,6 @@
     
     User *user = [User currentUser];
     if (user != nil ) {
-        NSLog(@"Welcome back %@", user.name);
         self.window.rootViewController = [[TweetsViewController alloc] init];
     } else {
         NSLog(@"User not logged in");
