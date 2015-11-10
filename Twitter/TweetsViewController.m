@@ -1,30 +1,21 @@
 //
-//  LoginViewController.m
+//  TweetsViewController.m
 //  Twitter
 //
-//  Created by Ankush Raina on 11/8/15.
+//  Created by Ankush Raina on 11/9/15.
 //  Copyright © 2015 Ankush Raina. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "TwitterClient.h"
 #import "TweetsViewController.h"
+#import "User.h"
 
-@interface LoginViewController ()
+@interface TweetsViewController ()
 
 @end
 
-@implementation LoginViewController
-- (IBAction)onLogin:(id)sender {
-    [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
-        if (user != nil) {
-            // Modally present tweets view
-            NSLog(@"Welcome to %@", user.name);
-            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];
-        } else {
-            // Present error view.
-        }
-    }];
+@implementation TweetsViewController
+- (IBAction)onLogout:(id)sender {
+    [User logout];
 }
 
 - (void)viewDidLoad {
