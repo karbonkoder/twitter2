@@ -7,6 +7,7 @@
 //
 
 #import "TwitterClient.h"
+#import "Tweet.h"
 
 NSString * const kTwitterConsumerKey = @"7IptNkyYQ8rLVx5Dj3gzhIERF";
 NSString * const kTwitterConsumerSecret = @"bazSgeLPXiiIMFYTRbsKVWdDbC7EHLwbodQXBn9ZEr9F6Whqbd";
@@ -65,21 +66,19 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
             NSLog(@"verify cred fail");
             self.loginCompletion(nil, error);
         }];
-
-        // Timeline not needed for login. But needed later to get tweets
-//        [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-//            //NSLog(@"tweets :%@", responseObject);
-//            NSArray *tweets = [Tweet tweetsWithArray:responseObject];
-//            for (Tweet *tweet in tweets) {
-//                NSLog(@"tweet :%@, created: %@", tweet.text, tweet.createdAt);
-//            }
-//        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-//            NSLog(@"error getting tweets");
-//        }];
     } failure:^(NSError *error) {
         NSLog(@"error in access token");
     }];
 
+}
+
+- (void)homeTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
 }
 
 @end
