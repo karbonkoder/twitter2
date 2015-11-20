@@ -8,7 +8,7 @@ The following **required** functionality is completed:
 
 - [ ] Hamburger menu
    - [ ] Dragging anywhere in the view should reveal the menu.
-   - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
+   - [x] The menu should include links to your profile, the home timeline, and the mentions view.
    - [ ] The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
 - [ ] Profile page
    - [ ] Contains the user header view
