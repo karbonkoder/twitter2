@@ -13,6 +13,7 @@
 #import "Tweet.h"
 #import "TweetsViewController.h"
 #import "MenuViewController.h"
+#import "HamburgerViewController.h"
 
 @interface AppDelegate ()
 
@@ -36,7 +37,9 @@
 //        self.window.rootViewController = [[LoginViewController alloc] init];
 //    }
     
-    self.window.rootViewController = [[MenuViewController alloc] init];
+//    self.window.rootViewController = [[MenuViewController alloc] init];
+    
+    self.window.rootViewController = [[HamburgerViewController alloc] init];
     
     [self.window makeKeyAndVisible];
     
