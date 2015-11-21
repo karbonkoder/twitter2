@@ -10,4 +10,6 @@
 
 @interface HamburgerViewController : UIViewController
 
+@property(strong, nonatomic) UIViewController *menuViewController;
+
 @end

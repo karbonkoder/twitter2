@@ -19,6 +19,15 @@
 
 @implementation HamburgerViewController
 
+@synthesize menuViewController = _menuViewController;
+
+- (void) setMenuViewController:(UIViewController *)menuViewController {
+    [self.view layoutIfNeeded];
+    
+    _menuViewController = menuViewController;
+    [self.menuView addSubview:self.menuViewController.view];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
