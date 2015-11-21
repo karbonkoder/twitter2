@@ -27,6 +27,8 @@
     self.viewControllers = @[[[TweetsViewController alloc] init], [[TweetsViewController alloc] init], [[TweetsViewController alloc] init]];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.hamburgerViewController.contentViewController = self.viewControllers[0];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -34,8 +34,8 @@
         HamburgerViewController *hamburgerViewController = [[HamburgerViewController alloc] init];
         MenuViewController *menuViewController = [[MenuViewController alloc] init];
         
-        hamburgerViewController.menuViewController = menuViewController;
         menuViewController.hamburgerViewController = hamburgerViewController;
+        hamburgerViewController.menuViewController = menuViewController;
         
         self.window.rootViewController = hamburgerViewController;
     } else {
