@@ -25,6 +25,7 @@
     [self.view layoutIfNeeded];
     
     _menuViewController = menuViewController;
+    self.menuViewController.view.frame = self.menuView.bounds;
     [self.menuView addSubview:self.menuViewController.view];
 }
 
@@ -34,6 +35,7 @@
     [self.view layoutIfNeeded];
     
     _contentViewController = contentViewController;
+    self.contentViewController.view.frame = self.contentView.bounds;
     [self.contentView addSubview:self.contentViewController.view];
 }
 

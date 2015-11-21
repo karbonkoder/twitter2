@@ -49,6 +49,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.hamburgerViewController.contentViewController = self.viewControllers[indexPath.row];
 }
 
