@@ -37,6 +37,11 @@
     _contentViewController = contentViewController;
     self.contentViewController.view.frame = self.contentView.bounds;
     [self.contentView addSubview:self.contentViewController.view];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.leftMarginConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (void)viewDidLoad {
