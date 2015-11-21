@@ -29,20 +29,19 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogout) name:UserDidLogoutNotification object:nil];
     
-//    User *user = [User currentUser];
-//    if (user != nil ) {
-//        self.window.rootViewController = [[TweetsViewController alloc] init];
-//    } else {
-//        NSLog(@"User not logged in");
-//        self.window.rootViewController = [[LoginViewController alloc] init];
-//    }
-    
-//    self.window.rootViewController = [[MenuViewController alloc] init];
-    
-    HamburgerViewController *hamburgerViewController = [[HamburgerViewController alloc] init];
-    hamburgerViewController.menuViewController = [[MenuViewController alloc] init];
-    
-    self.window.rootViewController = hamburgerViewController;
+    User *user = [User currentUser];
+    if (user != nil ) {
+        HamburgerViewController *hamburgerViewController = [[HamburgerViewController alloc] init];
+        MenuViewController *menuViewController = [[MenuViewController alloc] init];
+        
+        hamburgerViewController.menuViewController = menuViewController;
+        menuViewController.hamburgerViewController = hamburgerViewController;
+        
+        self.window.rootViewController = hamburgerViewController;
+    } else {
+        NSLog(@"User not logged in");
+        self.window.rootViewController = [[LoginViewController alloc] init];
+    }
     
     [self.window makeKeyAndVisible];
     

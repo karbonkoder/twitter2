@@ -28,6 +28,15 @@
     [self.menuView addSubview:self.menuViewController.view];
 }
 
+@synthesize contentViewController = _contentViewController;
+
+- (void) setContentViewController:(UIViewController *)contentViewController {
+    [self.view layoutIfNeeded];
+    
+    _contentViewController = contentViewController;
+    [self.contentView addSubview:self.contentViewController.view];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

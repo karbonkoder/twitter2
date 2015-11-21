@@ -7,12 +7,14 @@
 //
 
 #import "MenuViewController.h"
+#import "TweetsViewController.h"
 
-@interface MenuViewController () <UITableViewDataSource>
+@interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *menuItems;
+@property (strong, nonatomic) NSArray *viewControllers;
 
 @end
 
@@ -22,7 +24,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.menuItems = @[@"Profile", @"Home", @"Mentions"];
+    self.viewControllers = @[[[TweetsViewController alloc] init], [[TweetsViewController alloc] init], [[TweetsViewController alloc] init]];
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +46,10 @@
     cell.textLabel.text = self.menuItems[indexPath.row];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.hamburgerViewController.contentViewController = self.viewControllers[indexPath.row];
 }
 
 /*
