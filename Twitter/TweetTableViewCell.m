@@ -7,11 +7,13 @@
 //
 
 #import "TweetTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface TweetTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 
 
 @end
@@ -33,6 +35,7 @@
 
     self.tweetLabel.text = self.tweet.text;
     self.dateLabel.text = [NSString stringWithFormat:@"%@", self.tweet.createdAt];
+    [self.userImageView setImageWithURL:[NSURL URLWithString:self.tweet.user.profileImageUrl]];
     
     [self.tweetLabel sizeToFit];
     [self.dateLabel sizeToFit];

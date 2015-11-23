@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,15 +15,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="393" height="116.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl0-6w-1m3">
-                        <rect key="frame" x="8" y="8" width="377" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xaH-2l-esc">
+                        <rect key="frame" x="8" y="8" width="60" height="60"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="FoD-71-H2K"/>
+                            <constraint firstAttribute="width" constant="60" id="cVb-qm-xvg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sb-Eu-T9N">
+                        <rect key="frame" x="8" y="96" width="377" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sb-Eu-T9N">
-                        <rect key="frame" x="8" y="96.5" width="377" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl0-6w-1m3">
+                        <rect key="frame" x="76" y="8.5" width="309" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -32,15 +40,18 @@
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zl0-6w-1m3" secondAttribute="bottom" constant="8" id="7Iq-FZ-MJw"/>
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="8St-uL-Ec1"/>
                     <constraint firstItem="Zl0-6w-1m3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="BfH-8o-8MF"/>
+                    <constraint firstItem="xaH-2l-esc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Gbu-lz-hsq"/>
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="RUC-RU-2ts"/>
                     <constraint firstItem="Zl0-6w-1m3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="YAe-RF-7KJ"/>
-                    <constraint firstItem="Zl0-6w-1m3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="YlB-wZ-3Qw"/>
+                    <constraint firstItem="Zl0-6w-1m3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="68" id="YlB-wZ-3Qw"/>
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="l4e-4D-Sed"/>
+                    <constraint firstItem="xaH-2l-esc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="lRf-2E-uWq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateLabel" destination="2sb-Eu-T9N" id="i9y-zR-Skj"/>
                 <outlet property="tweetLabel" destination="Zl0-6w-1m3" id="Ugu-9Y-pSd"/>
+                <outlet property="userImageView" destination="xaH-2l-esc" id="tZ3-49-WCX"/>
             </connections>
             <point key="canvasLocation" x="329.5" y="322.5"/>
         </tableViewCell>
