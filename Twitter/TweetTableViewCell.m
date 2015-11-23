@@ -8,6 +8,7 @@
 
 #import "TweetTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ProfileViewController.h"
 
 @interface TweetTableViewCell()
 
@@ -15,12 +16,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 
-
 @end
 
 @implementation TweetTableViewCell
 - (IBAction)onImageViewButtonTapped:(id)sender {
-    NSLog(@"Button over image view tapped");
+    [self.delegate tweetTableViewCell:self didTapOnUser:self.tweet.user];
 }
 
 - (void)awakeFromNib {

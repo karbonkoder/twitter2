@@ -21,23 +21,42 @@
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favouritesCountLabel;
 
+@property (strong, nonatomic) User *user;
+
 @end
 
 @implementation ProfileViewController
 
+- (id) initWithUser:(User *)user {
+    self = [super init];
+    
+    if (self) {
+        self.user = user;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.nameLabel.text = self.user.name;
+    self.screeNameLabel.text = self.user.screenname;
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl]];
+    [self.profileBackgroundImageView setImageWithURL:[NSURL URLWithString:self.user.profileBackgroundUrl]];
+    self.taglineLabel.text = self.user.tagline;
+    self.tweetCountLabel.text = [[NSString alloc] initWithFormat:@"%@", self.user.tweetCount];
+    self.followingCountLabel.text = [[NSString alloc] initWithFormat:@"%@", self.user.followingCount];
+    self.followersCountLabel.text = [[NSString alloc] initWithFormat:@"%@", self.user.followersCount];
+    self.favouritesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", self.user.favouritesCount];
     
-    User *user = [User currentUser];
-    self.nameLabel.text = user.name;
-    self.screeNameLabel.text = user.screenname;
-    [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
-    [self.profileBackgroundImageView setImageWithURL:[NSURL URLWithString:user.profileBackgroundUrl]];
-    self.taglineLabel.text = user.tagline;
-    self.tweetCountLabel.text = [[NSString alloc] initWithFormat:@"%@", user.tweetCount];
-    self.followingCountLabel.text = [[NSString alloc] initWithFormat:@"%@", user.followingCount];
-    self.followersCountLabel.text = [[NSString alloc] initWithFormat:@"%@", user.followersCount];
-    self.favouritesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", user.favouritesCount];
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self action:@selector(backPressed:)];
+    self.navigationItem.leftBarButtonItem = btn;
+}
+
+-(void)backPressed: (id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,12 +15,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 #import "TweetDetailViewController.h"
+#import "ProfileViewController.h"
 
 typedef enum{
     HomeTimeLine, MentionsTimeLine, UserTimeLine
 } TimeLine;
 
-@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, TweetTableCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -132,18 +133,29 @@ typedef enum{
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
     
+    cell.delegate = self;
     cell.tweet = self.tweets[indexPath.row];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     TweetDetailViewController *tweetDetailViewController = [[TweetDetailViewController alloc] init];
     tweetDetailViewController.tweet = self.tweets[indexPath.row];
 
     [self presentViewController:tweetDetailViewController animated:YES completion:nil];
 }
 
+#pragma mark - TweetTableViewCellDelegate
+
+- (void)tweetTableViewCell:(TweetTableViewCell *)cell didTapOnUser:(User *)user {
+    ProfileViewController *pvc = [[ProfileViewController alloc] initWithUser:user];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:pvc];
+    
+    [self presentViewController:nvc animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

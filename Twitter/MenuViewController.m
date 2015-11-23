@@ -35,7 +35,7 @@
 
     self.menuItems = @[@"Home", @"Profile", @"User", @"Mentions"];
     self.viewControllers = @[homeTimeLineTweetsViewController,
-                             [[ProfileViewController alloc] init],
+                             [[ProfileViewController alloc] initWithUser:[User currentUser]],
                              userTimeLineTweetsViewController,
                              mentionsTimeLineTweetsViewController];
     self.tableView.dataSource = self;
