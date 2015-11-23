@@ -19,6 +19,8 @@
 		F69C47C01BFEE9DF008D3924 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C47BE1BFEE9DF008D3924 /* MenuViewController.xib */; };
 		F69C47C41BFEF1AA008D3924 /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69C47C21BFEF1AA008D3924 /* HamburgerViewController.m */; };
 		F69C47C51BFEF1AA008D3924 /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C47C31BFEF1AA008D3924 /* HamburgerViewController.xib */; };
+		F69C47C91C025A5E008D3924 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69C47C71C025A5E008D3924 /* ProfileViewController.m */; };
+		F69C47CA1C025A5E008D3924 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C47C81C025A5E008D3924 /* ProfileViewController.xib */; };
 		F6AE6D2C1BF1401A0060FC1D /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AE6D2B1BF1401A0060FC1D /* Tweet.m */; };
 		F6AE6D2F1BF1402F0060FC1D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AE6D2E1BF1402F0060FC1D /* User.m */; };
 		F6AE6D331BF165F40060FC1D /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AE6D311BF165F40060FC1D /* TweetsViewController.m */; };
@@ -53,6 +55,9 @@
 		F69C47C11BFEF1AA008D3924 /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerViewController.h; sourceTree = "<group>"; };
 		F69C47C21BFEF1AA008D3924 /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerViewController.m; sourceTree = "<group>"; };
 		F69C47C31BFEF1AA008D3924 /* HamburgerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HamburgerViewController.xib; sourceTree = "<group>"; };
+		F69C47C61C025A5E008D3924 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		F69C47C71C025A5E008D3924 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F69C47C81C025A5E008D3924 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		F6AE6D2A1BF1401A0060FC1D /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		F6AE6D2B1BF1401A0060FC1D /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		F6AE6D2D1BF1402F0060FC1D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -166,6 +171,9 @@
 				F69C47C11BFEF1AA008D3924 /* HamburgerViewController.h */,
 				F69C47C21BFEF1AA008D3924 /* HamburgerViewController.m */,
 				F69C47C31BFEF1AA008D3924 /* HamburgerViewController.xib */,
+				F69C47C61C025A5E008D3924 /* ProfileViewController.h */,
+				F69C47C71C025A5E008D3924 /* ProfileViewController.m */,
+				F69C47C81C025A5E008D3924 /* ProfileViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -267,6 +275,7 @@
 				F6AE6D341BF165F40060FC1D /* TweetsViewController.xib in Resources */,
 				F65B60BE1BEFF967002BCAD0 /* LaunchScreen.storyboard in Resources */,
 				F65B60BB1BEFF967002BCAD0 /* Assets.xcassets in Resources */,
+				F69C47CA1C025A5E008D3924 /* ProfileViewController.xib in Resources */,
 				F65B60C91BEFFC7A002BCAD0 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +344,7 @@
 				F65B60B01BEFF967002BCAD0 /* main.m in Sources */,
 				F65B60C81BEFFC7A002BCAD0 /* LoginViewController.m in Sources */,
 				F69C47C41BFEF1AA008D3924 /* HamburgerViewController.m in Sources */,
+				F69C47C91C025A5E008D3924 /* ProfileViewController.m in Sources */,
 				F6AE6D331BF165F40060FC1D /* TweetsViewController.m in Sources */,
 				F69C47BF1BFEE9DF008D3924 /* MenuViewController.m in Sources */,
 				F6CF40931BF1CA44008B9663 /* TweetDetailViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "TweetsViewController.h"
+#import "ProfileViewController.h"
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -23,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.menuItems = @[@"Profile", @"Home", @"Mentions"];
-    self.viewControllers = @[[[TweetsViewController alloc] init], [[TweetsViewController alloc] init], [[TweetsViewController alloc] init]];
+    self.menuItems = @[@"Tweets", @"Profile", @"Home", @"Mentions"];
+    self.viewControllers = @[[[TweetsViewController alloc] init], [[ProfileViewController alloc] init], [[ProfileViewController alloc] init], [[ProfileViewController alloc] init]];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
