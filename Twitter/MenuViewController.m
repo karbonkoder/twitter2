@@ -23,9 +23,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.menuItems = @[@"Tweets", @"Profile", @"Home", @"Mentions"];
-    self.viewControllers = @[[[TweetsViewController alloc] init], [[ProfileViewController alloc] init], [[ProfileViewController alloc] init], [[ProfileViewController alloc] init]];
+
+    TweetsViewController *homeTimeLineTweetsViewController = [[TweetsViewController alloc] init];
+    [homeTimeLineTweetsViewController showHomeTimeLine];
+    
+    TweetsViewController *mentionsTimeLineTweetsViewController = [[TweetsViewController alloc] init];
+    [mentionsTimeLineTweetsViewController showMentionsTimeLine];
+    
+    TweetsViewController *userTimeLineTweetsViewController = [[TweetsViewController alloc] init];
+    [userTimeLineTweetsViewController showUserTimeLine];
+
+    self.menuItems = @[@"Home", @"Profile", @"User", @"Mentions"];
+    self.viewControllers = @[homeTimeLineTweetsViewController,
+                             [[ProfileViewController alloc] init],
+                             userTimeLineTweetsViewController,
+                             mentionsTimeLineTweetsViewController];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     

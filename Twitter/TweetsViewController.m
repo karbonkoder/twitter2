@@ -16,11 +16,16 @@
 #import "ComposeViewController.h"
 #import "TweetDetailViewController.h"
 
+typedef enum{
+    HomeTimeLine, MentionsTimeLine, UserTimeLine
+} TimeLine;
+
 @interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (assign, nonatomic) TimeLine timeLine;
 
 @property (strong, nonatomic) NSArray *tweets;
 
@@ -29,6 +34,56 @@
 @end
 
 @implementation TweetsViewController
+
+- (void) showHomeTimeLine {
+    self.timeLine = HomeTimeLine;
+    [self showTimeLine];
+}
+
+- (void) showMentionsTimeLine {
+    self.timeLine = MentionsTimeLine;
+    [self showTimeLine];
+}
+
+- (void) showUserTimeLine {
+    self.timeLine = UserTimeLine;
+    [self showTimeLine];
+}
+
+- (void) showTimeLine {
+    switch (self.timeLine) {
+        case HomeTimeLine: {
+            [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+                self.tweets = tweets;
+                
+                [self.tableView reloadData];
+            }];
+            break;
+        }
+            
+        case MentionsTimeLine: {
+            [[TwitterClient sharedInstance] mentionsTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+                self.tweets = tweets;
+                
+                [self.tableView reloadData];
+            }];
+            break;
+        }
+            
+        case UserTimeLine: {
+            [[TwitterClient sharedInstance] userTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+                self.tweets = tweets;
+                
+                [self.tableView reloadData];
+            }];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 - (IBAction)onLogout:(id)sender {
     [User logout];
 }
@@ -58,19 +113,12 @@
     self.userNameLabel.text = user.name;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
     
-    [self fetchTweets];
+    [self showTimeLine];
 }
 
--(void) fetchTweets {
-    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        self.tweets = tweets;
-        
-        [self.tableView reloadData]; // TODO Move to different thread?
-    }];
-}
 
 -(void) onRefresh {
-    [self fetchTweets];
+    [self showTimeLine];
     
     [self.refreshControl endRefreshing];
 }

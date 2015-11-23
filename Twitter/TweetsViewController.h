@@ -10,4 +10,8 @@
 
 @interface TweetsViewController : UIViewController
 
+- (void) showHomeTimeLine;
+- (void) showMentionsTimeLine;
+- (void) showUserTimeLine;
+
 @end
