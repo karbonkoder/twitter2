@@ -19,6 +19,9 @@
 @end
 
 @implementation TweetTableViewCell
+- (IBAction)onImageViewButtonTapped:(id)sender {
+    NSLog(@"Button over image view tapped");
+}
 
 - (void)awakeFromNib {
     // Initialization code

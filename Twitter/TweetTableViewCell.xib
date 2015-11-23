@@ -30,19 +30,29 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl0-6w-1m3">
-                        <rect key="frame" x="76" y="8.5" width="309" height="14.5"/>
+                        <rect key="frame" x="76" y="8" width="309" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Dw-9l-XS0">
+                        <rect key="frame" x="8" y="8" width="60" height="60"/>
+                        <connections>
+                            <action selector="onImageViewButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2bu-e5-tb2"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zl0-6w-1m3" secondAttribute="bottom" constant="8" id="7Iq-FZ-MJw"/>
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="8St-uL-Ec1"/>
                     <constraint firstItem="Zl0-6w-1m3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="BfH-8o-8MF"/>
+                    <constraint firstItem="6Dw-9l-XS0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="E3h-gt-Itz"/>
+                    <constraint firstItem="6Dw-9l-XS0" firstAttribute="height" secondItem="xaH-2l-esc" secondAttribute="height" id="FCA-P6-SFv"/>
+                    <constraint firstItem="6Dw-9l-XS0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="FZC-ca-d2v"/>
                     <constraint firstItem="xaH-2l-esc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Gbu-lz-hsq"/>
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="RUC-RU-2ts"/>
                     <constraint firstItem="Zl0-6w-1m3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="YAe-RF-7KJ"/>
+                    <constraint firstItem="6Dw-9l-XS0" firstAttribute="width" secondItem="xaH-2l-esc" secondAttribute="width" id="YFK-iE-D6x"/>
                     <constraint firstItem="Zl0-6w-1m3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="68" id="YlB-wZ-3Qw"/>
                     <constraint firstItem="2sb-Eu-T9N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="l4e-4D-Sed"/>
                     <constraint firstItem="xaH-2l-esc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="lRf-2E-uWq"/>
